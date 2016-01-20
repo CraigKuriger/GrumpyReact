@@ -1,19 +1,20 @@
 import React from 'react';
 
 class Info extends React.Component{
+
   render(){
     return(
-      <div>
-        <p>INFO</p>
-        <p>Name: {this.props.name}</p>
-        <p>Hash: {this.props.hash.name}</p>
-      </div>
+    <ul className="list-group">
+      {this.props.cowList.map((object, index) => (
+        <li className="list-group-item" key={index}>ID: {object.id} --- Name: {object.name}</li>
+      ))}
+    </ul>
     )
   }
 }
 
-Info.propTypes = {
-  name: React.PropTypes.string.isRequired
-}
+// Info.propTypes = {
+//   name: React.PropTypes.string.isRequired
+// }
 
 export default Info;

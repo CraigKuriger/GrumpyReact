@@ -5,7 +5,7 @@ class Notes extends React.Component{
     return(
       <div>
         <p>NOTES</p>
-        NOTES {this.props.numbers}
+        {this.props.cowList[0].name}
       </div>
     )
   }

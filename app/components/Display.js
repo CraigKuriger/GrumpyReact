@@ -3,27 +3,44 @@ import Router from 'react-router'
 import Info from './cowdata/Info'
 import Calves from './cowdata/Calves'
 import Notes from './cowdata/Notes'
+import getCowInfo from './utils/helpers'
 
 class Display extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      numbers: [1, 2, 3,],
-      hash: {name: "Random String"},
+      cowList: [1, 2, 3,],
+      cowDetails: {name: "Random String"},
       notes: ["a", "b", "c"]
     }
   }
+  componentWillMount(){
+    this.init(this.props.params.cowId)
+  }
+  init(cowId){
+    getCowInfo(cowId)
+      .then((data) => {
+        this.setState({
+          cowList: data.cowList,
+          cowDetails: data.cowDetails
+        })
+      })
+  }
+  componentWillReceiveProps(nextProps){
+    this.init(nextProps.params.cowId)
+  }
   render(){
+
     return(
       <div>
-        <div className="col-md-4">
-          <Info name={this.props.params.name} hash={this.state.hash}/>
+        <div className="col-md-4 well">
+          <Info cowList={this.state.cowList}/>
         </div>
-        <div className="col-md-4">
-          <Calves numbers={this.state.numbers}/>
+        <div className="col-md-4 well">
+          <Calves cowDetails={this.state.cowDetails}/>
         </div>
-        <div className="col-md-4">
-          <Notes notes={this.state.notes}/>
+        <div className="col-md-4 well">
+          <Notes cowList={this.state.cowList}/>
         </div>
       </div>
     )

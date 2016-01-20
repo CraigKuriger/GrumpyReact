@@ -4,15 +4,17 @@ class Calves extends React.Component{
   render(){
     return(
       <div>
-        <p>CREATURES</p>
-        CREATURES {this.props.numbers}
+        <h4>COW</h4>
+        <p>NAME: {this.props.cowDetails.name}</p>
+        <p>Money: ${this.props.cowDetails.money}</p>
+        <img src={this.props.cowDetails.image_url} className="img-responsive"/>
       </div>
     )
   }
 }
 
-Calves.propTypes = {
-  numbers: React.PropTypes.array.isRequired
-}
+// Calves.propTypes = {
+//   cowNumbers: React.PropTypes.array.isRequired
+// }
 
 export default Calves;

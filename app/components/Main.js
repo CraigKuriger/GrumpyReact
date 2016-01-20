@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from './Search';
 
 class Main extends React.Component{
   render(){
@@ -25,6 +26,9 @@ class Main extends React.Component{
                 </li>
                 <li>
                   <a>Three</a>
+                </li>
+                <li>
+                  <Search history={this.props.history}/>
                 </li>
               </ul>
             </div>
